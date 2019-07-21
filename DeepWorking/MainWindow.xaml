@@ -12,10 +12,26 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
-        <WrapPanel Grid.Row="2">
-            <Button Margin="130 20 0 0" Height="20" Width="40" Content="test">
-                
-            </Button>
+        <WrapPanel Grid.Row="1">
+            <StackPanel Width="80" Height=" 20" Orientation="Horizontal">
+                <Border BorderBrush="Gray" BorderThickness="1">
+                    <TextBlock Width="60" Height="20" ></TextBlock>
+                </Border>
+                <Button Width="19" Height="20">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <TextBlock Background="{TemplateBinding Background}"></TextBlock>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="Button.IsPressed" Value="true">
+                                    <Setter Property="Button.Background" Value="red" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
         </WrapPanel>
     </Grid>
+    
+
 </Window>
