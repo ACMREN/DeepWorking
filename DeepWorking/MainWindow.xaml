@@ -17,12 +17,24 @@
                 <Border BorderBrush="Gray" BorderThickness="1">
                     <TextBlock Width="60" Height="20" ></TextBlock>
                 </Border>
-                <Button Width="19" Height="20">
+                <Button Width="18" Height="20">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <TextBlock Background="{TemplateBinding Background}"></TextBlock>
+                            <Border CornerRadius="2" x:Name="testBorder">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="White" Offset="0.5"/>
+                                        <GradientStop Color="Gray" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Grid>
+                                    <TextBlock Background="{TemplateBinding Background}"></TextBlock>
+                                </Grid>
+                            </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="Button.IsPressed" Value="true">
+                                    <Setter Property="Border.BorderBrush" Value="Black"></Setter>
+                                    <Setter Property="Border.BorderThickness" Value="5"></Setter>
                                     <Setter Property="Button.Background" Value="red" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
